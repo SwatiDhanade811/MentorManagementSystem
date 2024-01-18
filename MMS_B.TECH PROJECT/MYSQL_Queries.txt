@@ -1,0 +1,87 @@
+CREATE TABLE `announcements` (
+  `announcements` varchar(100) DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) 
+
+CREATE TABLE `leave_app` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cno` varchar(45) DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
+  `time` varchar(45) DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  `reason` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) 
+
+CREATE TABLE `mentor` (
+  `name` varchar(100) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `phno` varchar(45) DEFAULT NULL,
+  `dept` varchar(45) DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  `men_id` int NOT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`men_id`)
+)
+
+CREATE TABLE `queries` (
+  `query` varchar(50) DEFAULT NULL,
+  `cno` varchar(50) DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
+  `time` varchar(45) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) 
+
+CREATE TABLE `reply` (
+  `reply` varchar(200) DEFAULT NULL,
+  `cno` varchar(50) DEFAULT NULL,
+  `time` varchar(45) DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) 
+
+CREATE TABLE `reply_leave` (
+  `reply` varchar(200) DEFAULT NULL,
+  `cno` varchar(50) DEFAULT NULL,
+  `time` varchar(45) DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) 
+
+
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `cno` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `dob` varchar(45) DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `phno` varchar(45) DEFAULT NULL,
+  `branch` varchar(45) DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  `division` varchar(45) DEFAULT NULL,
+  `batch` varchar(255) DEFAULT NULL,
+  `mother_name` varchar(45) DEFAULT NULL,
+  `mother_occupation` varchar(45) DEFAULT NULL,
+  `father_name` varchar(45) DEFAULT NULL,
+  `father_occupation` varchar(45) DEFAULT NULL,
+  `siblings` int DEFAULT NULL,
+  `family_income` int DEFAULT NULL,
+  `blood_group` varchar(45) DEFAULT NULL,
+  `hobby` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  `achievements` varchar(45) DEFAULT NULL,
+  `id_img` varchar(45) DEFAULT NULL,
+  `men_id` int DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cno_UNIQUE` (`cno`),
+  KEY `men_id_idx` (`men_id`),
+  CONSTRAINT `men_id` FOREIGN KEY (`men_id`) REFERENCES `mentor` (`men_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) 
